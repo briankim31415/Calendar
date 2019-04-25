@@ -9,9 +9,18 @@
 import UIKit
 
 class ListViewTableViewController: UITableViewController {
+    
+    var data: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let time1 = Time(day: 21, month: 05, year: 2001, time: 2300)
+        let event1 = Event(name: "Bob", description: "Bob simply is...", date: time1)
+        let time2 = Time(day: 05, month: 02, year: 1984, time: 0800)
+        let event2 = Event(name: "1984", description: "George Orwell", date: time2)
+
+        data = [event1, event2]
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -19,11 +28,6 @@ class ListViewTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         navigationItem.leftBarButtonItem = editButtonItem
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
@@ -43,11 +47,14 @@ class ListViewTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+        cell.textLabel?.text = content.name
+        cell.detailTextLabel?.text = content.description
+        cell.textLabel?.text = content
+        cell.showsReorderControl = true
             print("Deleted")
             
             self.data.remove(at: indexPath.row)
+   
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
