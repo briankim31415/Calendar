@@ -41,7 +41,8 @@ class ListViewTableViewController: UITableViewController {
         return cell
     }
     
-
+    //The random list of strings that the table is displaying as a test
     let data = ["Hello", "Goodbye", "Watch"]
+    
 
 }
