@@ -18,7 +18,7 @@ class ListViewTableViewController: UITableViewController {
         let time1 = Time(day: 21, month: 05, year: 2001, time: 2300)
         let event1 = Event(name: "Bob", description: "Bob simply is...", date: time1)
         let time2 = Time(day: 05, month: 02, year: 1984, time: 0800)
-        let event2 = Event(name: "Joe", description: "Joe, just like Bob, simply is...", date: time2)
+        let event2 = Event(name: "1984", description: "George Orwell", date: time2)
 
         data = [event1, event2]
     }
@@ -41,11 +41,10 @@ class ListViewTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarID", for: indexPath)
         let content = data[indexPath.row]
         cell.textLabel?.text = content.name
-        cell.detailTextLabel?.text = content.description
+        cell.showsReorderControl = true
         return cell
     }
     
-   
+        
     
-
 }
