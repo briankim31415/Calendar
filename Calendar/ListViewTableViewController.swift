@@ -9,15 +9,15 @@
 import UIKit
 
 class ListViewTableViewController: UITableViewController {
+    
+    var data: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let time1 = Time(day: 21, month: 05, year: 2001, time: 2300)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        data = [Event(name: "Bob", description: "Bob simply is...", date: time1)]
     }
 
     // MARK: - Table view data source
@@ -37,12 +37,11 @@ class ListViewTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarID", for: indexPath)
         let content = data[indexPath.row]
-        cell.textLabel?.text = content
+        cell.textLabel?.text = content.name
         return cell
     }
     
-    //The random list of strings that the table is displaying as a test
-    let data = ["Hello", "Goodbye", "Watch"]
+   
     
 
 }
