@@ -21,6 +21,7 @@ class ListViewTableViewController: UITableViewController {
         let event2 = Event(name: "1984", description: "George Orwell", date: time2)
 
         data = [event1, event2]
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 
     // MARK: - Table view data source
@@ -41,10 +42,14 @@ class ListViewTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarID", for: indexPath)
         let content = data[indexPath.row]
         cell.textLabel?.text = content.name
-        cell.showsReorderControl = true
         return cell
     }
     
-        
-    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            self.data.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
