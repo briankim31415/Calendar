@@ -15,6 +15,7 @@
 		76C0AD9F226F8CFC004E6BF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76C0AD9D226F8CFC004E6BF2 /* Main.storyboard */; };
 		76C0ADA1226F8CFE004E6BF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76C0ADA0226F8CFE004E6BF2 /* Assets.xcassets */; };
 		76C0ADA4226F8CFE004E6BF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76C0ADA2226F8CFE004E6BF2 /* LaunchScreen.storyboard */; };
+		B17FEAAB2280B2510094EBBE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17FEAAA2280B2510094EBBE /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		76C0ADA3226F8CFE004E6BF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76C0ADA5226F8CFE004E6BF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A7A41732BFFF3377AC8C4E1 /* Pods-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.debug.xcconfig"; path = "Target Support Files/Pods-Calendar/Pods-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
+		B17FEAAA2280B2510094EBBE /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		ED813BE3C17DD3E129FB822B /* Pods-Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.release.xcconfig"; path = "Target Support Files/Pods-Calendar/Pods-Calendar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				04F73C3C226F96FB00FD0FA7 /* ListViewTableViewController.swift */,
+				B17FEAAA2280B2510094EBBE /* Notification.swift */,
 				0453BE92227233390045DCDE /* Event.swift */,
 				76C0AD99226F8CFC004E6BF2 /* AppDelegate.swift */,
 				76C0AD9D226F8CFC004E6BF2 /* Main.storyboard */,
@@ -91,7 +94,6 @@
 				9A7A41732BFFF3377AC8C4E1 /* Pods-Calendar.debug.xcconfig */,
 				ED813BE3C17DD3E129FB822B /* Pods-Calendar.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -218,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B17FEAAB2280B2510094EBBE /* Notification.swift in Sources */,
 				04F73C3D226F96FB00FD0FA7 /* ListViewTableViewController.swift in Sources */,
 				0453BE93227233390045DCDE /* Event.swift in Sources */,
 				76C0AD9A226F8CFC004E6BF2 /* AppDelegate.swift in Sources */,
