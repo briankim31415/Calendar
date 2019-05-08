@@ -24,6 +24,8 @@ class ListViewTableViewController: UITableViewController {
         let event2 = Event(name: "1984", description: "George Orwell", date: time2)
 
         data = [event1, event2]
+        data.sort()
+        print(data)
         navigationItem.leftBarButtonItem = editButtonItem
     }
 
