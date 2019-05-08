@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ListViewTableViewController: UITableViewController {
     
@@ -14,6 +15,8 @@ class ListViewTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
         let time1 = Time(day: 21, month: 05, year: 2001, time: 2300)
         let event1 = Event(name: "Bob", description: "Bob simply is...", date: time1)
