@@ -22,9 +22,12 @@ class ListViewTableViewController: UITableViewController {
         let event1 = Event(name: "Bob", description: "Bob simply is...", date: time1)
         let time2 = Time(day: 05, month: 02, year: 1984, time: 0800)
         let event2 = Event(name: "1984", description: "George Orwell", date: time2)
+        let time3 = Time(day: 21, month: 05, year: 2001, time: 2350)
+        let event3 = Event(name: "New Bob", description: "New Bob simply is...", date: time3)
 
-        data = [event1, event2]
+        data = [event1, event2, event3]
         data.sort()
+        tableView.reloadData()
         print(data)
         navigationItem.leftBarButtonItem = editButtonItem
     }
@@ -56,5 +59,9 @@ class ListViewTableViewController: UITableViewController {
             self.data.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    @IBAction func unwindToCalendarTableView(segue: UIStoryboardSegue) {
+    
     }
 }
