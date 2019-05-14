@@ -12,6 +12,7 @@ import UserNotifications
 class ListViewTableViewController: UITableViewController {
     
     var data: [Event] = []
+    var edittingEventIndexPath: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,11 +68,28 @@ class ListViewTableViewController: UITableViewController {
     
     @IBAction func unwindToCalendarTableView(segue: UIStoryboardSegue) {
         guard segue.identifier == "saveUnwind" else { return }
-        let sourceViewController = segue.source as! AddEditEventTableViewController
+        if let sourceViewController = segue.source as? AddEditEventTableViewController{
+            if let event = sourceViewController.event {
+                data.append(event)
+                sortAndReloadData()
+            }
+        }
         
-        if let event = sourceViewController.event {
-            data.append(event)
-            sortAndReloadData()
+        if let sourceViewController = segue.source as? EditEventTableViewController {
+            if let event = sourceViewController.event {
+                data[(edittingEventIndexPath?.row)!] = event
+                sortAndReloadData()
+            }
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? EditEventTableViewController else {return}
+        
+        if let indexPath = tableView.indexPathForSelectedRow, segue.identifier == "EditEvent" {
+            edittingEventIndexPath = indexPath
+            destination.event = data[indexPath.row]
         }
     }
 }
