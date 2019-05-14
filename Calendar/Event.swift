@@ -64,11 +64,15 @@ class Event : Comparable, CustomStringConvertible {
     
 }
 
-struct Time {
+struct Time : CustomStringConvertible {
     var day: Int
     var month: Int
     var year: Int
     var time: Int
+    
+    var description: String {
+        return "\(month)/\(day)/\(year) at \(time/100) hours"
+    }
     
     init(day : Int, month : Int, year : Int, time : Int) {
         self.day = day
