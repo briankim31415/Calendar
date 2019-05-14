@@ -24,9 +24,11 @@ class ListViewTableViewController: UITableViewController{
         let event1 = Event(name: "Bob", description: "Bob simply is...", date: time1)
         let time2 = Time(day: 05, month: 02, year: 1984, time: 0800)
         let event2 = Event(name: "1984", description: "George Orwell", date: time2)
+        let time3 = Time(day: 21, month: 05, year: 2001, time: 2350)
+        let event3 = Event(name: "New Bob", description: "New Bob simply is...", date: time3)
 
-        data = [event1, event2]
-        data.sort()
+        data = [event1, event2, event3]
+        sortAndReloadData()
         print(data)
         navigationItem.leftBarButtonItem = editButtonItem
         
@@ -34,6 +36,11 @@ class ListViewTableViewController: UITableViewController{
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Register", style: .plain, target: self, action: #selector(registerLocal))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(scheduleLocal))
         
+    }
+    
+    func sortAndReloadData() {
+        data.sort()
+        tableView.reloadData()
     }
 
     
@@ -92,9 +99,10 @@ class ListViewTableViewController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarID", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarID", for: indexPath) as! EventTableViewCell
         let content = data[indexPath.row]
-        cell.textLabel?.text = content.name
+        cell.update(with: content)
+        //cell.textLabel?.text = content.name
         return cell
     }
     
@@ -103,6 +111,16 @@ class ListViewTableViewController: UITableViewController{
             print("Deleted")
             self.data.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    @IBAction func unwindToCalendarTableView(segue: UIStoryboardSegue) {
+        guard segue.identifier == "saveUnwind" else { return }
+        let sourceViewController = segue.source as! AddEditEventTableViewController
+        
+        if let event = sourceViewController.event {
+            data.append(event)
+            sortAndReloadData()
         }
     }
 }
