@@ -27,6 +27,11 @@ class EventTableViewCell: UITableViewCell {
     func update(with event: Event) {
         eventName.text = event.name
         eventDescription.text = event.itemDescription
-        eventTime.text = "\(event.date.time) @ \(event.date.month)/\(event.date.day)/\(event.date.year)"
+        var timeInArray = String(event.date.time).compactMap{Int(String($0))}
+        if timeInArray.count == 3 {
+            timeInArray.insert(0, at: 0)
+        }
+        let regularTime: String = "\(timeInArray[0])\(timeInArray[1]):\(timeInArray[2])\(timeInArray[3])"
+        eventTime.text = "\(regularTime) @ \(event.date.month)/\(event.date.day)/\(event.date.year)"
     }
 }
