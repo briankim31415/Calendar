@@ -26,10 +26,14 @@ class ListViewTableViewController: UITableViewController {
         let event3 = Event(name: "New Bob", description: "New Bob simply is...", date: time3)
 
         data = [event1, event2, event3]
-        data.sort()
-        tableView.reloadData()
+        sortAndReloadData()
         print(data)
         navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    func sortAndReloadData() {
+        data.sort()
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -62,6 +66,12 @@ class ListViewTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToCalendarTableView(segue: UIStoryboardSegue) {
-    
+        guard segue.identifier == "saveUnwind" else { return }
+        let sourceViewController = segue.source as! AddEditEventTableViewController
+        
+        if let event = sourceViewController.event {
+            data.append(event)
+            sortAndReloadData()
+        }
     }
 }
