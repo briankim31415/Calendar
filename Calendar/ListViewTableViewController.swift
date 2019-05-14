@@ -9,14 +9,16 @@
 import UIKit
 import UserNotifications
 
-class ListViewTableViewController: UITableViewController {
-    
+class ListViewTableViewController: UITableViewController{
+
     var data: [Event] = []
+    
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
         let time1 = Time(day: 21, month: 05, year: 2001, time: 2300)
         let event1 = Event(name: "Bob", description: "Bob simply is...", date: time1)
@@ -27,8 +29,54 @@ class ListViewTableViewController: UITableViewController {
         data.sort()
         print(data)
         navigationItem.leftBarButtonItem = editButtonItem
+        
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Register", style: .plain, target: self, action: #selector(registerLocal))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(scheduleLocal))
+        
     }
 
+    
+    @objc func registerLocal()
+    {
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+        if granted {
+            print("Permission granted")
+        }
+        else {
+            print("Permission not granted")
+        }
+            
+        }
+    }
+    
+    @objc func scheduleLocal()
+    {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Testing" //title of alert
+        content.body = "Insert body" //main text
+        content.categoryIdentifier = "Alarm" //custom action
+        content.userInfo = ["CustomData": "Testing"] //just custom data
+        content.sound = .default //sound property
+        
+        
+        var dateComponent = DateComponents()
+        dateComponent.hour = 14
+        dateComponent.minute = 22
+        //this one is the real calendar
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
+        
+        //this one is for immediate testing with time delay by 5 seconds
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
