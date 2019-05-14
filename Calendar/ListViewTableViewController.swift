@@ -52,9 +52,10 @@ class ListViewTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarID", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarID", for: indexPath) as! EventTableViewCell
         let content = data[indexPath.row]
-        cell.textLabel?.text = content.name
+        cell.update(with: content)
+        //cell.textLabel?.text = content.name
         return cell
     }
     
