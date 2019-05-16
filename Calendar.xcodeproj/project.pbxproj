@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0453BE93227233390045DCDE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453BE92227233390045DCDE /* Event.swift */; };
+		049C0B65228B41EE003E8A04 /* EditEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C0B64228B41EE003E8A04 /* EditEventTableViewController.swift */; };
 		04F73C3D226F96FB00FD0FA7 /* ListViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F73C3C226F96FB00FD0FA7 /* ListViewTableViewController.swift */; };
 		5064BF657A6AAC46F37E8032 /* Pods_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D33CAC2BA132C0C5B55AC94 /* Pods_Calendar.framework */; };
 		76B53B552285FCB10032E0D2 /* AddEditEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B53B542285FCB10032E0D2 /* AddEditEventTableViewController.swift */; };
@@ -21,7 +22,9 @@
 
 /* Begin PBXFileReference section */
 		0453BE92227233390045DCDE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		049C0B64228B41EE003E8A04 /* EditEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventTableViewController.swift; sourceTree = "<group>"; };
 		04F73C3C226F96FB00FD0FA7 /* ListViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewTableViewController.swift; sourceTree = "<group>"; };
+		04FB22F5228360FF005D7D80 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		2D33CAC2BA132C0C5B55AC94 /* Pods_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76B53B542285FCB10032E0D2 /* AddEditEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEventTableViewController.swift; sourceTree = "<group>"; };
 		76C0AD96226F8CFC004E6BF2 /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		049C0B63228B3E01003E8A04 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				04FB22F5228360FF005D7D80 /* EventViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		636DE6F6203E44BE569E9D7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +74,7 @@
 				76C0AD97226F8CFC004E6BF2 /* Products */,
 				C9AABA00E56BB39E4577D58E /* Pods */,
 				636DE6F6203E44BE569E9D7E /* Frameworks */,
+				049C0B63228B3E01003E8A04 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +91,7 @@
 			children = (
 				76F66654228DE11000934478 /* EventTableViewCell.swift */,
 				04F73C3C226F96FB00FD0FA7 /* ListViewTableViewController.swift */,
+				049C0B64228B41EE003E8A04 /* EditEventTableViewController.swift */,
 				76B53B542285FCB10032E0D2 /* AddEditEventTableViewController.swift */,
 				0453BE92227233390045DCDE /* Event.swift */,
 				76C0AD99226F8CFC004E6BF2 /* AppDelegate.swift */,
@@ -225,6 +238,7 @@
 			files = (
 				76F66655228DE11000934478 /* EventTableViewCell.swift in Sources */,
 				76B53B552285FCB10032E0D2 /* AddEditEventTableViewController.swift in Sources */,
+				049C0B65228B41EE003E8A04 /* EditEventTableViewController.swift in Sources */,
 				04F73C3D226F96FB00FD0FA7 /* ListViewTableViewController.swift in Sources */,
 				0453BE93227233390045DCDE /* Event.swift in Sources */,
 				76C0AD9A226F8CFC004E6BF2 /* AppDelegate.swift in Sources */,
