@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class EditEventTableViewController: UITableViewController {
 
@@ -83,6 +84,37 @@ class EditEventTableViewController: UITableViewController {
         let newEventTime = Time(day: dayInt, month: monthInt, year: yearInt, time: timeInt)
         
         event = Event(name: eventName, description: eventDescription, date: newEventTime)
+        scheduleLocal(name: eventName, descrip: eventDescription, time: newEventTime.time)
+    }
+    
+    func scheduleLocal(name: String, descrip: String, time: Int)
+    {
+        let center = UNUserNotificationCenter.current()
+        //center.removeAllPendingNotificationRequests()
+        
+        let content = UNMutableNotificationContent()
+        content.title = name
+        content.body = descrip
+        content.categoryIdentifier = "Alarm" //custom action
+        content.userInfo = ["CalendarEvent": name] //just custom data
+        content.sound = .default //sound property
+        
+        var timeInArray = String(time).compactMap{Int(String($0))}
+        if timeInArray.count == 3 {
+            timeInArray.insert(0, at: 0)
+        }
+        
+        var dateComponent = DateComponents()
+        dateComponent.hour = Int(String("\(timeInArray[0])\(timeInArray[1])"))
+        dateComponent.minute = Int(String("\(timeInArray[2])\(timeInArray[3])"))
+        //this one is the real calendar
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
+        
+        //this one is for immediate testing with time delay by 5 seconds
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
     }
 
 }

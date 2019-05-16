@@ -80,7 +80,7 @@ class AddEditEventTableViewController: UITableViewController {
     func scheduleLocal(name: String, descrip: String, time: Int)
     {
         let center = UNUserNotificationCenter.current()
-        center.removeAllPendingNotificationRequests()
+        //center.removeAllPendingNotificationRequests()
         
         let content = UNMutableNotificationContent()
         content.title = name
