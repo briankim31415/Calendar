@@ -50,7 +50,8 @@ class AddEditEventTableViewController: UITableViewController {
         //Add checks to not enable save button if
         //fields are not proper length/size or data type
         
-        saveButton.isEnabled = !eventNameText.isEmpty && !eventDescriptionText.isEmpty && !yearText.isEmpty && !monthText.isEmpty && !dayText.isEmpty && !timeText.isEmpty
+        
+        saveButton.isEnabled = !eventNameText.isEmpty && !eventDescriptionText.isEmpty && Int(yearText) != nil && Int(monthText) != nil && Int(dayText) != nil && Int(timeText) != nil && (yearText.count == 4) && (monthText.count == 2 || monthText.count == 1) && (dayText.count == 1 || dayText.count == 2) && (timeText.count == 4)
     }
     
     @IBAction func textEditingChanged(_ sender: UITextField) {
