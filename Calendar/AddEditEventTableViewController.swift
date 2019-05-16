@@ -73,23 +73,23 @@ class AddEditEventTableViewController: UITableViewController {
         let timeInt: Int = Int(timeTextField.text ?? "0")!
         let newEventTime = Time(day: dayInt, month: monthInt, year: yearInt, time: timeInt)
         
-        let event = Event(name: eventName, description: eventDescription, date: newEventTime)
-        scheduleLocal(with: event)
+        event = Event(name: eventName, description: eventDescription, date: newEventTime)
+        scheduleLocal(name: eventName, descrip: eventDescription, time: newEventTime.time)
     }
     
-    func scheduleLocal(with event: Event)
+    func scheduleLocal(name: String, descrip: String, time: Int)
     {
         let center = UNUserNotificationCenter.current()
         center.removeAllPendingNotificationRequests()
         
         let content = UNMutableNotificationContent()
-        content.title = event.name
-        content.body = event.itemDescription
+        content.title = name
+        content.body = descrip
         content.categoryIdentifier = "Alarm" //custom action
-        content.userInfo = ["CalendarEvent": "Event"] //just custom data
+        content.userInfo = ["CalendarEvent": name] //just custom data
         content.sound = .default //sound property
         
-        var timeInArray = String(event.date.time).compactMap{Int(String($0))}
+        var timeInArray = String(time).compactMap{Int(String($0))}
         if timeInArray.count == 3 {
             timeInArray.insert(0, at: 0)
         }
