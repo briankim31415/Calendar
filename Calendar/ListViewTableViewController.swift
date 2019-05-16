@@ -30,43 +30,13 @@ class ListViewTableViewController: UITableViewController{
         navigationItem.leftBarButtonItem = editButtonItem
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in })
-        
-        scheduleLocal()
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(scheduleLocal))
-        
     }
     
     func sortAndReloadData() {
         data.sort()
         tableView.reloadData()
     }
-
     
-    func scheduleLocal()
-    {
-        let center = UNUserNotificationCenter.current()
-        center.removeAllPendingNotificationRequests()
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Testing" //title of alert
-        content.body = "Insert body" //main text
-        content.categoryIdentifier = "Alarm" //custom action
-        content.userInfo = ["CustomData": "Testing"] //just custom data
-        content.sound = .default //sound property
-        
-        
-        var dateComponent = DateComponents()
-        dateComponent.hour = 13
-        dateComponent.minute = 39
-        //this one is the real calendar
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        
-        //this one is for immediate testing with time delay by 5 seconds
-        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        center.add(request)
-    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
