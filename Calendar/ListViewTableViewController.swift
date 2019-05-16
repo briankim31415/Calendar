@@ -32,9 +32,10 @@ class ListViewTableViewController: UITableViewController{
         print(data)
         navigationItem.leftBarButtonItem = editButtonItem
         
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in })
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Register", style: .plain, target: self, action: #selector(registerLocal))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(scheduleLocal))
+        scheduleLocal()
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(scheduleLocal))
         
     }
     
@@ -44,22 +45,7 @@ class ListViewTableViewController: UITableViewController{
     }
 
     
-    @objc func registerLocal()
-    {
-        let center = UNUserNotificationCenter.current()
-        
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-        if granted {
-            print("Permission granted")
-        }
-        else {
-            print("Permission not granted")
-        }
-            
-        }
-    }
-    
-    @objc func scheduleLocal()
+    func scheduleLocal()
     {
         let center = UNUserNotificationCenter.current()
         center.removeAllPendingNotificationRequests()
@@ -73,8 +59,8 @@ class ListViewTableViewController: UITableViewController{
         
         
         var dateComponent = DateComponents()
-        dateComponent.hour = 14
-        dateComponent.minute = 22
+        dateComponent.hour = 13
+        dateComponent.minute = 39
         //this one is the real calendar
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
         
